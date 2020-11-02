@@ -4,7 +4,7 @@ FROM alpine:3.2
 
 # Install cURL
 
-RUN apk --update add wget curl ca-certificates tar \
+RUN apk --update add curl ca-certificates tar \
     && curl -Ls https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.21-r2/glibc-2.21-r2.apk > /tmp/glibc-2.21-r2.apk \
     && apk add --allow-untrusted /tmp/glibc-2.21-r2.apk
 
@@ -12,7 +12,7 @@ RUN apk --update add wget curl ca-certificates tar \
 
 # Download and unarchive Java
 
-RUN mkdir /opt && wget -O jdk-8u271-linux-x64.tar.gz https://zhangchang.stackstorage.com/s/vT84lSMkLxz7slHI \
+RUN mkdir /opt && curl https://zhangchang.stackstorage.com/s/vT84lSMkLxz7slHI -o jdk-8u271-linux-x64.tar.gz \
     | tar -xzf - -C /opt && \
     ln -s /opt/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk \
     && rm -rf /opt/jdk/*src.zip \
