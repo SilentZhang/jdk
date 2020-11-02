@@ -12,7 +12,7 @@ RUN apk --update add wget curl ca-certificates tar \
 
 # Download and unarchive Java
 
-RUN mkdir /opt && wget https://zhangchang.stackstorage.com/s/vT84lSMkLxz7slHI \
+RUN mkdir /opt && wget -O jdk-8u271-linux-x64.tar.gz https://zhangchang.stackstorage.com/s/vT84lSMkLxz7slHI \
     | tar -xzf - -C /opt && \
     ln -s /opt/jdk1.${JAVA_VERSION_MAJOR}.0_${JAVA_VERSION_MINOR} /opt/jdk \
     && rm -rf /opt/jdk/*src.zip \
